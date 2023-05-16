@@ -1,5 +1,14 @@
-const convertingHexToRgb = () => {
-    const userInput = prompt("Enter Hex or RGB value here");
+const userInput = () => {
+    let input = prompt("Enter Hex or RGB value here")
+    if(input = /#[0-9a-f]{6}/g) {
+        convertingHexToRgb(input);
+    } else {
+        convertingRgbToHex([input]);
+    };
+}
+
+const convertingHexToRgb = (userInput) => {
+    //const userInput = prompt("Enter Hex value here.");
         let splitInput = userInput.match(/.{1,2}/g);
             if(userInput.length != 6) {
                 alert("Only six-digit hex colors are allowed.");
@@ -12,23 +21,20 @@ const convertingHexToRgb = () => {
             return convertedInput;
             };
 };
-convertingHexToRgb();
+//convertingHexToRgb();
 
 
-const convertingRgbToHex = () => {
-    const userInput = [prompt("Enter Hex value here")];
-    let converted = userInput[0].match(/\d+/gi).map(Number);
-    return "#" +
+const convertingRgbToHex = (userInput) => {
+    //const userInput = [prompt("Enter RGB value here.")];
+        let converted = userInput[0].match(/\d+/gi).map(Number);
+        return "#" +
              ((1<<24) +
              (converted[0]<<16) +
              (converted[1]<<8) +
              converted[2]).toString(16).slice(1);
 };
-convertingRgbToHex();
-
-
-
-//learn again, giving some value to another constant
+//convertingRgbToHex();
+userInput();
 
 //Question 3: Write a function that converts HEX to RGB.
 //Then Make that function auto-dect the formats so that if you enter HEX color format it returns RGB
