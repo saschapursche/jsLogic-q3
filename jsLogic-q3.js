@@ -1,11 +1,11 @@
 const userInput = () => {
-    const pattern = /#[0-9a-f]{6}/g;
+    const pattern = /[0-9a-f]{6}/g;
     let input = prompt("Enter Hex or RGB value here")
     if(input.match(pattern)) {
         console.log("hex", input);
         convertingHexToRgb(input);
     } else {
-        console.log("rgb", input); //only outputs rgb without calling function
+        console.log("rgb", input);
         convertingRgbToHex([input]);
     };
 }
